@@ -9,8 +9,7 @@ public class ChartConverter {
 
     private static final String PACKAGE_NAME = "me.dimitri.model";
 
-    @SneakyThrows
-    public String convertToJson(Object object) {
+    public String convertToJson(Object object) throws IllegalAccessException {
         if (object == null) {
             throw new NullPointerException("Null chart provided");
         }
@@ -42,8 +41,7 @@ public class ChartConverter {
         return jsonBuilder.toString();
     }
 
-    @SneakyThrows
-    private String serializeValue(Field field, Object object) {
+    private String serializeValue(Field field, Object object) throws IllegalAccessException {
         StringBuilder sb = new StringBuilder();
 
         Object value = field.get(object);
@@ -66,7 +64,7 @@ public class ChartConverter {
         return convertToJson(value);
     }
 
-    private String serializeArray(Object object) {
+    private String serializeArray(Object object) throws IllegalAccessException {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
 

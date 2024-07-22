@@ -21,7 +21,12 @@ public class Main {
         chart.setData(data);
 
         ChartConverter chartConverter = new ChartConverter();
-        System.out.println(chartConverter.convertToJson(chart));
+
+        try {
+            System.out.println(chartConverter.convertToJson(chart));
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

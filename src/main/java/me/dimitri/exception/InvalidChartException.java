@@ -1,6 +1,6 @@
 package me.dimitri.exception;
 
-public class InvalidChartException extends Exception {
+public class InvalidChartException extends RuntimeException {
 
     public InvalidChartException(String message) {
         super(message);
