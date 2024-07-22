@@ -1,20 +1,20 @@
 package me.dimitri;
 
 import me.dimitri.model.Chart;
-import me.dimitri.model.ChartData;
-import me.dimitri.model.ChartDatasets;
+import me.dimitri.model.Data;
+import me.dimitri.model.Datasets;
 import me.dimitri.serializer.ChartConverter;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        ChartDatasets datasets = new ChartDatasets();
+        Datasets datasets = new Datasets();
         datasets.setData(new String[]{"70"});
         datasets.setBackgroundColor("green");
 
-        ChartData data = new ChartData();
-        data.setDatasets(new ChartDatasets[]{datasets});
+        Data data = new Data();
+        data.setDatasets(new Datasets[]{datasets});
 
         Chart chart = new Chart();
         chart.setType("radialGauge");
