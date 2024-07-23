@@ -43,7 +43,7 @@ public class ChartSerializer {
         return json.toString();
     }
 
-    private String serializeObject(Object value) throws IllegalAccessException {
+    public String serializeObject(Object value) throws IllegalAccessException {
         StringBuilder json = new StringBuilder();
 
         if (value instanceof String) {
