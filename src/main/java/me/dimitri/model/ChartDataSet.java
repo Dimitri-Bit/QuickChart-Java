@@ -7,7 +7,7 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class ChartDatasets {
+public class ChartDataSet {
 
     private String type;
     private String label;

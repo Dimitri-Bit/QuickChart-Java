@@ -10,6 +10,6 @@ import lombok.Setter;
 public class ChartData {
 
     private String[] labels;
-    private ChartDatasets[] datasets;
+    private ChartDataSet[] datasets;
 
 }

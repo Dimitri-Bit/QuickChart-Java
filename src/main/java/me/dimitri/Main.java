@@ -1,36 +1,52 @@
 package me.dimitri;
 
 import me.dimitri.model.Chart;
-import me.dimitri.model.ChartCoordinateData;
 import me.dimitri.model.ChartData;
-import me.dimitri.model.ChartDatasets;
+import me.dimitri.model.ChartDataSet;
+import me.dimitri.model.datapoint.SankeyDataPoint;
 import me.dimitri.serializer.ChartSerializer;
 
 public class Main {
 
     public static void main(String[] args) throws IllegalAccessException {
-        ChartCoordinateData cords1 = ChartCoordinateData.builder()
-                .x(2)
-                .y(4)
+        SankeyDataPoint dataPoint1 = SankeyDataPoint.builder()
+                .from("Step A")
+                .to("Step B")
+                .flow(10)
                 .build();
 
-        ChartDatasets datasets = ChartDatasets.builder()
-                .label("Data 1")
-                .data(new ChartCoordinateData[]{cords1})
+        SankeyDataPoint dataPoint2 = SankeyDataPoint.builder()
+                .from("Step A")
+                .to("Step C")
+                .flow(5)
                 .build();
 
-        ChartData chartData = ChartData.builder()
-                .datasets(new ChartDatasets[]{datasets})
+        SankeyDataPoint dataPoint3 = SankeyDataPoint.builder()
+                .from("Step B")
+                .to("Step C")
+                .flow(10)
+                .build();
+
+        SankeyDataPoint dataPoint4 = SankeyDataPoint.builder()
+                .from("Step D")
+                .to("Step C")
+                .flow(7)
+                .build();
+
+        ChartDataSet dataSet = ChartDataSet.builder()
+                .data(new SankeyDataPoint[]{dataPoint1, dataPoint2, dataPoint3, dataPoint4})
+                .build();
+
+        ChartData data = ChartData.builder()
+                .datasets(new ChartDataSet[]{dataSet})
                 .build();
 
         Chart chart = Chart.builder()
-                .type("scatter")
-                .data(chartData)
+                .type("sankey")
+                .data(data)
                 .build();
 
         ChartSerializer serializer = new ChartSerializer();
         System.out.println(serializer.serializeChartObject(chart));
-
-        // TODO: look into Number class
     }
 }
