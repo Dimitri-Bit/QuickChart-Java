@@ -16,8 +16,8 @@ public class ChartDatasets {
     private String color;
     private Boolean fill;
     private Boolean hidden;
-    private Integer borderWidth;
-    private Integer value;
+    private Number borderWidth;
+    private Number value;
     private Object[] data;
 
 }

@@ -51,7 +51,7 @@ public class ChartSerializer {
             return json.toString();
         }
 
-        if (value instanceof Double || value instanceof Integer || value instanceof Boolean) {
+        if (value instanceof Number || value instanceof Boolean) {
             json.append(value);
             return json.toString();
         }
