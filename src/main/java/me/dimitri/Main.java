@@ -20,6 +20,6 @@ public class Main {
 
         ChartSerializer serializer = new ChartSerializer();
 
-        System.out.println(serializer.serializeChartObject(chart));
+        System.out.println(serializer.serialize(chart));
     }
 }

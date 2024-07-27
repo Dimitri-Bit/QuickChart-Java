@@ -1,30 +1,46 @@
 package me.dimitri.serializer;
 
-import me.dimitri.exception.InvalidChartException;
 import me.dimitri.model.ChartObject;
 
 import java.lang.reflect.Field;
 
 public class ChartSerializer {
 
-    public String serializeChartObject(Object object) throws IllegalAccessException {
+    public String serialize(Object object) throws IllegalAccessException {
+        StringBuilder json = new StringBuilder();
 
-        if (object == null) {
-            throw new NullPointerException("Null chart provided");
+        if (object instanceof ChartObject chartObject) {
+            json.append(serializeChartObj(chartObject));
+            return json.toString();
         }
 
-        if (!(object instanceof ChartObject)) {
-            throw new InvalidChartException("Only Chart Objects can be serialized");
+        if (object instanceof String) {
+            json.append("\"").append(object).append("\"");
+            return json.toString();
         }
 
+        if (object instanceof Number || object instanceof Boolean) {
+            json.append(object);
+            return json.toString();
+        }
+
+        if (object.getClass().isArray()) {
+            json.append(serializeArray(object));
+            return json.toString();
+        }
+
+        return "";
+    }
+
+    private String serializeChartObj(ChartObject chartObject) throws IllegalAccessException {
         StringBuilder json = new StringBuilder();
         json.append("{");
 
-        Field[] fields = object.getClass().getDeclaredFields();
+        Field[] fields = chartObject.getClass().getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
 
-            Object fieldValue = field.get(object);
+            Object fieldValue = field.get(chartObject);
             if (fieldValue == null) {
                 continue;
             }
@@ -33,33 +49,13 @@ public class ChartSerializer {
                 json.append(",");
             }
 
-            String serializedObject = serializeObject(fieldValue);
-            json.append("\"").append(field.getName()).append("\":").append(serializedObject);
+            String key = field.getName();
+            String serializedValue = serialize(fieldValue);
+            json.append("\"").append(key).append("\":").append(serializedValue);
         }
 
         json.append("}");
         return json.toString();
-    }
-
-    public String serializeObject(Object value) throws IllegalAccessException {
-        StringBuilder json = new StringBuilder();
-
-        if (value instanceof String) {
-            json.append("\"").append(value).append("\"");
-            return json.toString();
-        }
-
-        if (value instanceof Number || value instanceof Boolean) {
-            json.append(value);
-            return json.toString();
-        }
-
-        if (value.getClass().isArray()) {
-            json.append(serializeArray(value));
-            return json.toString();
-        }
-
-        return serializeChartObject(value);
     }
 
     private String serializeArray(Object object) throws IllegalAccessException {
@@ -68,7 +64,7 @@ public class ChartSerializer {
 
         Object[] arr = (Object[]) object;
         for (int i = 0; i < arr.length; i++) {
-            json.append(serializeObject(arr[i]));
+            json.append(serialize(arr[i]));
 
             if (i < (arr.length - 1)) {
                 json.append(",");

@@ -11,7 +11,7 @@ class ChartSerializerTest {
         String expect = "[1.23,2.53,3.7]";
         Double[] arr = {1.23, 2.53, 3.7};
 
-        String serializedArr = serializer.serializeObject(arr);
+        String serializedArr = serializer.serialize(arr);
         Assertions.assertEquals(expect, serializedArr);
     }
 
@@ -20,7 +20,7 @@ class ChartSerializerTest {
         String expect = "[1,2,3]";
         Integer[] arr = {1, 2, 3};
 
-        String serializedArr = serializer.serializeObject(arr);
+        String serializedArr = serializer.serialize(arr);
         Assertions.assertEquals(expect, serializedArr);
     }
 
@@ -29,7 +29,7 @@ class ChartSerializerTest {
         String expect = "[\"1\",\"2\",\"3\"]";
         String[] arr = {"1", "2", "3"};
 
-        String serializedArr = serializer.serializeObject(arr);
+        String serializedArr = serializer.serialize(arr);
         Assertions.assertEquals(expect, serializedArr);
     }
 
@@ -38,7 +38,7 @@ class ChartSerializerTest {
         String expect = "[false,false,true]";
         Boolean[] arr = {false, false, true};
 
-        String serializedArr = serializer.serializeObject(arr);
+        String serializedArr = serializer.serialize(arr);
         Assertions.assertEquals(expect, serializedArr);
     }
 
@@ -47,7 +47,7 @@ class ChartSerializerTest {
         String expect = "\"Hello World!\"";
         String string = "Hello World!";
 
-        String serializedString = serializer.serializeObject(string);
+        String serializedString = serializer.serialize(string);
         Assertions.assertEquals(expect, serializedString);
     }
 
@@ -56,7 +56,7 @@ class ChartSerializerTest {
         String expect = "420";
         Integer integer = 420;
 
-        String serializedString = serializer.serializeObject(integer);
+        String serializedString = serializer.serialize(integer);
         Assertions.assertEquals(expect, serializedString);
     }
 
@@ -65,7 +65,7 @@ class ChartSerializerTest {
         String expect = "420.52";
         Double aDouble = 420.52;
 
-        String serializedString = serializer.serializeObject(aDouble);
+        String serializedString = serializer.serialize(aDouble);
         Assertions.assertEquals(expect, serializedString);
     }
 
@@ -74,7 +74,7 @@ class ChartSerializerTest {
         String expect = "false";
         Boolean aBoolean = false;
 
-        String serializedString = serializer.serializeObject(aBoolean);
+        String serializedString = serializer.serialize(aBoolean);
         Assertions.assertEquals(expect, serializedString);
     }
 
