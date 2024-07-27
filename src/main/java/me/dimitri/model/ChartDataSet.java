@@ -14,9 +14,12 @@ public class ChartDataSet {
     private String backgroundColor;
     private String borderColor;
     private String color;
+    private String yAxisID;
+    private String xAxisID;
     private Boolean fill;
     private Boolean hidden;
     private Number borderWidth;
+    private Number lineTension;
     private Number value;
     private Object[] data;
 
