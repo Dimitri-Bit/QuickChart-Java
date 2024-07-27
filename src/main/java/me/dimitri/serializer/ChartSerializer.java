@@ -1,12 +1,11 @@
 package me.dimitri.serializer;
 
 import me.dimitri.exception.InvalidChartException;
+import me.dimitri.model.ChartObject;
 
 import java.lang.reflect.Field;
 
 public class ChartSerializer {
-
-    private static final String PACKAGE_NAME = "me.dimitri.model";
 
     public String serializeChartObject(Object object) throws IllegalAccessException {
 
@@ -14,9 +13,8 @@ public class ChartSerializer {
             throw new NullPointerException("Null chart provided");
         }
 
-        // Todo: Look into verifying object with interfaces
-        if (!object.getClass().getPackageName().startsWith(PACKAGE_NAME)) {
-            throw new InvalidChartException("Object is not from the valid package");
+        if (!(object instanceof ChartObject)) {
+            throw new InvalidChartException("Only Chart Objects can be serialized");
         }
 
         StringBuilder json = new StringBuilder();
