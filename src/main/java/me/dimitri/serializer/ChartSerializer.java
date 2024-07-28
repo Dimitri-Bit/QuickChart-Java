@@ -1,6 +1,7 @@
 package me.dimitri.serializer;
 
 import me.dimitri.model.ChartObject;
+import me.dimitri.model.impl.datapoint.GenericDataPoint;
 
 import java.lang.reflect.Field;
 
@@ -10,6 +11,11 @@ public class ChartSerializer {
         StringBuilder json = new StringBuilder();
 
         if (object instanceof ChartObject chartObject) {
+            if (object instanceof GenericDataPoint<?> genericDataPoint) {
+                json.append(serialize(genericDataPoint.getValue()));
+                return json.toString();
+            }
+
             json.append(serializeChartObj(chartObject));
             return json.toString();
         }

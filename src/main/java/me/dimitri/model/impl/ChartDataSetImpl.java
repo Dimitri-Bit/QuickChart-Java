@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import me.dimitri.model.ChartDataSet;
+import me.dimitri.model.DataPoint;
 
 @Builder
 @Getter
@@ -22,6 +23,6 @@ public class ChartDataSetImpl implements ChartDataSet {
     private Number borderWidth;
     private Number lineTension;
     private Number value;
-    private Object[] data;
+    private DataPoint[] data;
 
 }
