@@ -4,11 +4,11 @@ import me.dimitri.model.Chart;
 import me.dimitri.model.ChartData;
 import me.dimitri.model.ChartDataSet;
 import me.dimitri.model.DataPoint;
+import me.dimitri.model.QuickChart;
 import me.dimitri.model.impl.ChartDataImpl;
 import me.dimitri.model.impl.ChartDataSetImpl;
 import me.dimitri.model.impl.ChartImpl;
 import me.dimitri.model.impl.datapoint.GenericDataPoint;
-import me.dimitri.serializer.ChartSerializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +41,12 @@ public class Main {
                 .data(data)
                 .build();
 
-        ChartSerializer serializer = new ChartSerializer();
-        System.out.println(serializer.serialize(chart));
+        QuickChart quickChart = QuickChart.builder()
+                .version("4")
+                .chart(chart)
+                .build();
+
+        System.out.println(quickChart.toJson());
     }
 
     private static DataPoint[] dataPoints(Integer[] arr) {
