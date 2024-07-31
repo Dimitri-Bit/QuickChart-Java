@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
         ChartDataSet dataSet1 = ChartDataSetImpl.builder()
                 .type("line")
                 .label("Dataset 1")
@@ -41,10 +41,9 @@ public class Main {
                 .data(data)
                 .build();
 
-        QuickChart quickChart = QuickChart.builder()
-                .version("4")
-                .chart(chart)
-                .build();
+        QuickChart quickChart = new QuickChart();
+        quickChart.setChart(chart);
+        quickChart.setVersion("2");
 
         System.out.println(quickChart.toJson());
     }
