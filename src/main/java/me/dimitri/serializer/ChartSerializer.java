@@ -1,13 +1,15 @@
 package me.dimitri.serializer;
 
+import lombok.experimental.UtilityClass;
 import me.dimitri.model.ChartObject;
 import me.dimitri.model.impl.datapoint.GenericDataPoint;
 
 import java.lang.reflect.Field;
 
+@UtilityClass
 public class ChartSerializer {
 
-    public String serialize(Object object) throws IllegalAccessException {
+    public static String serialize(Object object) throws IllegalAccessException {
         StringBuilder json = new StringBuilder();
 
         if (object instanceof ChartObject chartObject) {
@@ -38,7 +40,7 @@ public class ChartSerializer {
         return "";
     }
 
-    private String serializeChartObj(ChartObject chartObject) throws IllegalAccessException {
+    private static String serializeChartObj(ChartObject chartObject) throws IllegalAccessException {
         StringBuilder json = new StringBuilder();
         json.append("{");
 
@@ -64,7 +66,7 @@ public class ChartSerializer {
         return json.toString();
     }
 
-    private String serializeArray(Object object) throws IllegalAccessException {
+    private static String serializeArray(Object object) throws IllegalAccessException {
         StringBuilder json = new StringBuilder();
         json.append("[");
 
