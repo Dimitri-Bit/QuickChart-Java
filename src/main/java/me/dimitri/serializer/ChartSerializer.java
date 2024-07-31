@@ -9,7 +9,9 @@ import java.lang.reflect.Field;
 @UtilityClass
 public class ChartSerializer {
 
-    public static String serialize(Object object) throws IllegalAccessException {
+    // TODO: Add logging
+
+    public static String serialize(Object object) {
         StringBuilder json = new StringBuilder();
 
         if (object instanceof ChartObject chartObject) {
@@ -40,7 +42,7 @@ public class ChartSerializer {
         return "";
     }
 
-    private static String serializeChartObj(ChartObject chartObject) throws IllegalAccessException {
+    private static String serializeChartObj(ChartObject chartObject) {
         StringBuilder json = new StringBuilder();
         json.append("{");
 
@@ -48,7 +50,13 @@ public class ChartSerializer {
         for (Field field : fields) {
             field.setAccessible(true);
 
-            Object fieldValue = field.get(chartObject);
+            Object fieldValue;
+            try {
+                fieldValue = field.get(chartObject);
+            } catch (IllegalAccessException e) {
+                fieldValue = "";
+            }
+
             if (fieldValue == null) {
                 continue;
             }
@@ -66,7 +74,7 @@ public class ChartSerializer {
         return json.toString();
     }
 
-    private static String serializeArray(Object object) throws IllegalAccessException {
+    private static String serializeArray(Object object) {
         StringBuilder json = new StringBuilder();
         json.append("[");
 
