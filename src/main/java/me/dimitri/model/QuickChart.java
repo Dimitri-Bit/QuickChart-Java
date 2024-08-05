@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.dimitri.model.chart.Chart;
-import me.dimitri.model.chart.ChartObject;
 import me.dimitri.serializer.ChartSerializer;
 import org.apache.hc.core5.net.URIBuilder;
 

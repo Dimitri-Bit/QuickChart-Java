@@ -1,4 +1,4 @@
-package me.dimitri.model.chart;
+package me.dimitri.model;
 
 public interface ChartObject {
 }
