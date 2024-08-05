@@ -1,8 +1,8 @@
 package me.dimitri.serializer;
 
 import lombok.experimental.UtilityClass;
-import me.dimitri.model.ChartObject;
-import me.dimitri.model.impl.datapoint.GenericDataPoint;
+import me.dimitri.model.chart.ChartObject;
+import me.dimitri.model.chart.impl.datapoint.GenericDataPoint;
 
 import java.lang.reflect.Field;
 

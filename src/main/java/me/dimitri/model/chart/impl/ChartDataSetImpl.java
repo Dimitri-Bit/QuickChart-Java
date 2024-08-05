@@ -1,10 +1,10 @@
-package me.dimitri.model.impl;
+package me.dimitri.model.chart.impl;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import me.dimitri.model.ChartDataSet;
-import me.dimitri.model.DataPoint;
+import me.dimitri.model.chart.ChartDataSet;
+import me.dimitri.model.chart.DataPoint;
 
 @Builder
 @Getter

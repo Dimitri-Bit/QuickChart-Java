@@ -1,14 +1,14 @@
 package me.dimitri;
 
-import me.dimitri.model.Chart;
-import me.dimitri.model.ChartData;
-import me.dimitri.model.ChartDataSet;
-import me.dimitri.model.DataPoint;
+import me.dimitri.model.chart.Chart;
+import me.dimitri.model.chart.ChartData;
+import me.dimitri.model.chart.ChartDataSet;
+import me.dimitri.model.chart.DataPoint;
 import me.dimitri.model.QuickChart;
-import me.dimitri.model.impl.ChartDataImpl;
-import me.dimitri.model.impl.ChartDataSetImpl;
-import me.dimitri.model.impl.ChartImpl;
-import me.dimitri.model.impl.datapoint.GenericDataPoint;
+import me.dimitri.model.chart.impl.ChartDataImpl;
+import me.dimitri.model.chart.impl.ChartDataSetImpl;
+import me.dimitri.model.chart.impl.ChartImpl;
+import me.dimitri.model.chart.impl.datapoint.GenericDataPoint;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,7 @@ public class Main {
         quickChart.setChart(chart);
         quickChart.setVersion("2");
 
-        System.out.println(quickChart.toJson());
+        System.out.println(quickChart.getUrl("quickchart.io", "chart", "http"));
     }
 
     private static DataPoint[] dataPoints(Integer[] arr) {

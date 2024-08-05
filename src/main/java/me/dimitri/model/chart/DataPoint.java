@@ -1,4 +1,4 @@
-package me.dimitri.model;
+package me.dimitri.model.chart;
 
 public interface DataPoint extends ChartObject {
 }

@@ -1,9 +1,9 @@
-package me.dimitri.model.impl.datapoint;
+package me.dimitri.model.chart.impl.datapoint;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import me.dimitri.model.DataPoint;
+import me.dimitri.model.chart.DataPoint;
 
 @Builder
 @Getter

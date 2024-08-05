@@ -3,6 +3,8 @@ package me.dimitri.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.dimitri.model.chart.Chart;
+import me.dimitri.model.chart.ChartObject;
 import me.dimitri.serializer.ChartSerializer;
 import org.apache.hc.core5.net.URIBuilder;
 
@@ -18,19 +20,15 @@ public class QuickChart implements ChartObject {
     private String backgroundColor;
     private String version;
 
-    private String schema = "http";
-    private String host = "quickchart.io";
-    private String path = "chart";
-
     public String toJson() {
         return ChartSerializer.serialize(this);
     }
 
-    public String getUrl() {
+    public String getUrl(String host, String path, String schema) {
         URIBuilder builder = new URIBuilder()
-                .setScheme(this.schema)
-                .setHost(this.host)
-                .setPath(this.path);
+                .setScheme(schema)
+                .setHost(host)
+                .setPath(path);
 
         if (width != null)
             builder.addParameter("width", width.toString());
