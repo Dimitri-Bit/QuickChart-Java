@@ -28,7 +28,7 @@ public class Main {
         QuickChart quickChart = new QuickChart();
         quickChart.setChart(getChart());
 
-        System.out.println(quickChart.getUrl("quickchart.io", "chart", "http"));
+        System.out.println(quickChart.toJson());
 
     }
 
