@@ -6,6 +6,7 @@ import lombok.Setter;
 import me.dimitri.model.options.v2.AxesOption;
 import me.dimitri.model.options.v2.GridLinesOption;
 import me.dimitri.model.options.v2.ScaleLabelOption;
+import me.dimitri.model.options.v2.TicksOption;
 
 @Builder
 @Getter
@@ -21,5 +22,6 @@ public class AxesOptionImpl implements AxesOption {
     private Number max;
     private GridLinesOption gridLines;
     private ScaleLabelOption scaleLabel;
+    private TicksOption ticks;
 
 }

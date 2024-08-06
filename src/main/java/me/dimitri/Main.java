@@ -16,7 +16,7 @@ import me.dimitri.model.options.v2.ScalesOption;
 import me.dimitri.model.options.v2.impl.AxesOptionImpl;
 import me.dimitri.model.options.v2.impl.GridLinesOptionImpl;
 import me.dimitri.model.options.v2.impl.OptionsImpl;
-import me.dimitri.model.options.v2.impl.ScalesObjectImpl;
+import me.dimitri.model.options.v2.impl.ScalesOptionImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +59,7 @@ public class Main {
                 .gridLines(linesOption)
                 .build();
 
-        ScalesOption scalesOption = ScalesObjectImpl.builder()
+        ScalesOption scalesOption = ScalesOptionImpl.builder()
                 .yAxes(new AxesOption[]{yAxesOption})
                 .build();
 
