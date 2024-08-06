@@ -23,6 +23,8 @@ public class ChartDataSetImpl implements ChartDataSet {
     private Number borderWidth;
     private Number lineTension;
     private Number value;
+    private Number pointRadius;
+    private String pointStyle;
     private DataPoint[] data;
 
 }
