@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import me.dimitri.model.options.Options;
+import me.dimitri.model.options.v2.LegendOption;
 import me.dimitri.model.options.v2.ScalesOption;
 import me.dimitri.model.options.v2.TitleOption;
 
@@ -14,5 +15,6 @@ public class OptionsImpl implements Options {
 
     private TitleOption title;
     private ScalesOption scales;
+    private LegendOption legend;
 
 }
