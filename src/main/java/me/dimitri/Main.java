@@ -10,9 +10,13 @@ import me.dimitri.model.chart.impl.ChartDataSetImpl;
 import me.dimitri.model.chart.impl.ChartImpl;
 import me.dimitri.model.chart.impl.datapoint.GenericDataPoint;
 import me.dimitri.model.options.Options;
-import me.dimitri.model.options.v2.TitleOption;
+import me.dimitri.model.options.v2.AxesOption;
+import me.dimitri.model.options.v2.GridLinesOption;
+import me.dimitri.model.options.v2.ScalesOption;
+import me.dimitri.model.options.v2.impl.AxesOptionImpl;
+import me.dimitri.model.options.v2.impl.GridLinesOptionImpl;
 import me.dimitri.model.options.v2.impl.OptionsImpl;
-import me.dimitri.model.options.v2.impl.TitleOptionImpl;
+import me.dimitri.model.options.v2.impl.ScalesObjectImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +24,18 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        TitleOption titleOption = TitleOptionImpl.builder()
-                .display(true)
-                .text("Basic Chart Title")
-                .build();
 
-        Options options = OptionsImpl.builder()
-                .title(titleOption)
-                .build();
+        QuickChart quickChart = new QuickChart();
+        quickChart.setChart(getChart());
 
+        System.out.println(quickChart.getUrl("quickchart.io", "chart", "http"));
+
+    }
+
+    private static Chart getChart() {
         ChartDataSet dataSet = ChartDataSetImpl.builder()
-                .label("Users")
                 .data(dataPoints(new Integer[]{50, 60, 70, 180}))
+                .label("Users")
                 .build();
 
         ChartData data = ChartDataImpl.builder()
@@ -39,16 +43,29 @@ public class Main {
                 .datasets(new ChartDataSet[]{dataSet})
                 .build();
 
-        Chart chart = ChartImpl.builder()
-                .type("bar")
+        return ChartImpl.builder()
                 .data(data)
-                .options(options)
+                .type("bar")
+                .options(getOptions())
+                .build();
+    }
+
+    private static Options getOptions() {
+        GridLinesOption linesOption = GridLinesOptionImpl.builder()
+                .display(false)
                 .build();
 
-        QuickChart quickChart = new QuickChart();
-        quickChart.setChart(chart);
+        AxesOption yAxesOption = AxesOptionImpl.builder()
+                .gridLines(linesOption)
+                .build();
 
-        System.out.println(quickChart.getUrl("quickchart.io", "chart", "http"));
+        ScalesOption scalesOption = ScalesObjectImpl.builder()
+                .yAxes(new AxesOption[]{yAxesOption})
+                .build();
+
+        return OptionsImpl.builder()
+                .scales(scalesOption)
+                .build();
     }
 
     private static DataPoint[] dataPoints(Integer[] arr) {
