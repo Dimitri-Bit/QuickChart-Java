@@ -10,13 +10,9 @@ import me.dimitri.model.chart.impl.ChartDataSetImpl;
 import me.dimitri.model.chart.impl.ChartImpl;
 import me.dimitri.model.chart.impl.datapoint.GenericDataPoint;
 import me.dimitri.model.options.Options;
-import me.dimitri.model.options.v2.AxesOption;
-import me.dimitri.model.options.v2.GridLinesOption;
-import me.dimitri.model.options.v2.ScalesOption;
-import me.dimitri.model.options.v2.impl.AxesOptionImpl;
-import me.dimitri.model.options.v2.impl.GridLinesOptionImpl;
+import me.dimitri.model.options.v2.LegendOption;
+import me.dimitri.model.options.v2.impl.LegendOptionImpl;
 import me.dimitri.model.options.v2.impl.OptionsImpl;
-import me.dimitri.model.options.v2.impl.ScalesOptionImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,48 +20,41 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        LegendOption legend = LegendOptionImpl.builder()
+                .display(true)
+                .position("right")
+                .align("start")
+                .build();
 
-        QuickChart quickChart = new QuickChart();
-        quickChart.setChart(getChart());
+        Options options = OptionsImpl.builder()
+                .legend(legend)
+                .build();
 
-        System.out.println(quickChart.toJson());
+        ChartDataSet dataSet1 = ChartDataSetImpl.builder()
+                .label("Dollars")
+                .data(dataPoints(new Integer[]{1000, 1234, 2020, 2005, 1300}))
+                .build();
 
-    }
-
-    private static Chart getChart() {
-        ChartDataSet dataSet = ChartDataSetImpl.builder()
-                .data(dataPoints(new Integer[]{50, 60, 70, 180}))
+        ChartDataSet dataSet2 = ChartDataSetImpl.builder()
                 .label("Users")
+                .data(dataPoints(new Integer[]{50, 150, 250, 350, 400}))
                 .build();
 
         ChartData data = ChartDataImpl.builder()
-                .labels(new String[]{"Q1", "Q2", "Q3", "Q4"})
-                .datasets(new ChartDataSet[]{dataSet})
+                .labels(new String[]{"2016", "2017", "2018", "2019", "2020"})
+                .datasets(new ChartDataSet[]{dataSet1, dataSet2})
                 .build();
 
-        return ChartImpl.builder()
+        Chart chart = ChartImpl.builder()
+                .type("line")
                 .data(data)
-                .type("bar")
-                .options(getOptions())
-                .build();
-    }
-
-    private static Options getOptions() {
-        GridLinesOption linesOption = GridLinesOptionImpl.builder()
-                .display(false)
+                .options(options)
                 .build();
 
-        AxesOption yAxesOption = AxesOptionImpl.builder()
-                .gridLines(linesOption)
-                .build();
+        QuickChart quickChart = new QuickChart();
+        quickChart.setChart(chart);
 
-        ScalesOption scalesOption = ScalesOptionImpl.builder()
-                .yAxes(new AxesOption[]{yAxesOption})
-                .build();
-
-        return OptionsImpl.builder()
-                .scales(scalesOption)
-                .build();
+        System.out.println(quickChart.getUrl("quickchart.io", "chart", "http"));
     }
 
     private static DataPoint[] dataPoints(Integer[] arr) {
