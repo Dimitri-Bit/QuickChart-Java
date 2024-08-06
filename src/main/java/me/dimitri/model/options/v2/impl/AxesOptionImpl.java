@@ -12,9 +12,11 @@ import me.dimitri.model.options.v2.ScaleLabelOption;
 @Setter
 public class AxesOptionImpl implements AxesOption {
 
+    private String id;
     private String type;
     private String position;
     private Boolean display;
+    private Boolean stacked;
     private Number min;
     private Number max;
     private GridLinesOption gridLines;
