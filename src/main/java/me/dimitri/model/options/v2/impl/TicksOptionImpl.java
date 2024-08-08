@@ -22,5 +22,15 @@ public class TicksOptionImpl implements TicksOption {
     private Number suggestedMax;
     private Number suggestedMin;
     private Boolean showLabelBackdrop;
+    private Number sampleSize;
+    private Boolean autoSkip;
+    private Boolean autoSkipPadding;
+    private Number labelOffset;
+    private Number maxRotation;
+    private Number minRotation;
+    private Boolean mirror;
+    private Number padding;
+    private String type;
+    private String[] labels;
 
 }

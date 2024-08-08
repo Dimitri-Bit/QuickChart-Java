@@ -1,6 +1,5 @@
 package me.dimitri;
 
-import me.dimitri.model.QuickChart;
 import me.dimitri.model.chart.Chart;
 import me.dimitri.model.chart.ChartData;
 import me.dimitri.model.chart.ChartDataSet;

@@ -18,6 +18,7 @@ public class AxesOptionImpl implements AxesOption {
     private String position;
     private Boolean display;
     private Boolean stacked;
+    private Boolean offset;
     private Number min;
     private Number max;
     private GridLinesOption gridLines;
