@@ -1,4 +1,3 @@
-import me.dimitri.serializer.ChartSerializer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +6,7 @@ import static me.dimitri.serializer.ChartSerializer.serialize;
 class ChartSerializerTest {
 
     @Test
-    void testDoubleArraySerialization() throws IllegalAccessException {
+    void testDoubleArraySerialization() {
         String expect = "[1.23,2.53,3.7]";
         Double[] arr = {1.23, 2.53, 3.7};
 
@@ -16,7 +15,7 @@ class ChartSerializerTest {
     }
 
     @Test
-    void testIntegerArraySerialization() throws IllegalAccessException {
+    void testIntegerArraySerialization() {
         String expect = "[1,2,3]";
         Integer[] arr = {1, 2, 3};
 
@@ -25,7 +24,7 @@ class ChartSerializerTest {
     }
 
     @Test
-    void testStringArraySerialization() throws IllegalAccessException {
+    void testStringArraySerialization() {
         String expect = "[\"1\",\"2\",\"3\"]";
         String[] arr = {"1", "2", "3"};
 
@@ -34,7 +33,7 @@ class ChartSerializerTest {
     }
 
     @Test
-    void testBooleanArraySerialization() throws IllegalAccessException {
+    void testBooleanArraySerialization() {
         String expect = "[false,false,true]";
         Boolean[] arr = {false, false, true};
 
@@ -43,7 +42,7 @@ class ChartSerializerTest {
     }
 
     @Test
-    void testStringSerialization() throws IllegalAccessException {
+    void testStringSerialization() {
         String expect = "\"Hello World!\"";
         String string = "Hello World!";
 
@@ -52,7 +51,7 @@ class ChartSerializerTest {
     }
 
     @Test
-    void testIntegerSerialization() throws IllegalAccessException {
+    void testIntegerSerialization(){
         String expect = "420";
         Integer integer = 420;
 
@@ -61,7 +60,7 @@ class ChartSerializerTest {
     }
 
     @Test
-    void testDoubleSerialization() throws IllegalAccessException {
+    void testDoubleSerialization() {
         String expect = "420.52";
         Double aDouble = 420.52;
 
@@ -70,7 +69,7 @@ class ChartSerializerTest {
     }
 
     @Test
-    void testBooleanSerialization() throws IllegalAccessException {
+    void testBooleanSerialization() {
         String expect = "false";
         Boolean aBoolean = false;
 
