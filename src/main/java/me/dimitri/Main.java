@@ -3,19 +3,17 @@ package me.dimitri;
 import me.dimitri.model.chart.Chart;
 import me.dimitri.model.chart.ChartData;
 import me.dimitri.model.chart.ChartDataSet;
-import me.dimitri.model.chart.DataPoint;
 import me.dimitri.model.chart.impl.ChartDataImpl;
 import me.dimitri.model.chart.impl.ChartDataSetImpl;
 import me.dimitri.model.chart.impl.ChartImpl;
-import me.dimitri.model.chart.impl.datapoint.GenericDataPoint;
 import me.dimitri.model.options.Options;
 import me.dimitri.model.options.v2.LegendOption;
 import me.dimitri.model.options.v2.impl.LegendOptionImpl;
 import me.dimitri.model.options.v2.impl.OptionsImpl;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import static me.dimitri.util.DataPointHelper.dataPoints;
 
 public class Main {
 
@@ -53,21 +51,6 @@ public class Main {
 
         QuickChart quickChart = new QuickChart();
         quickChart.setChart(chart);
-
-        quickChart.setHost("quickchart.io");
-        quickChart.setPath("chart");
-        quickChart.setSchema("http");
-
-        quickChart.toFile("");
-    }
-
-    private static DataPoint[] dataPoints(Integer[] arr) {
-        List<GenericDataPoint<Integer>> genericDataPoints = new ArrayList<>();
-
-        for (Integer integer : arr) {
-            genericDataPoints.add(new GenericDataPoint<>(integer));
-        }
-
-        return genericDataPoints.toArray(new DataPoint[0]);
+        System.out.println(quickChart.toJson());
     }
 }
