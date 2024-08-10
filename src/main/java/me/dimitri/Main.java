@@ -13,12 +13,13 @@ import me.dimitri.model.options.v2.LegendOption;
 import me.dimitri.model.options.v2.impl.LegendOptionImpl;
 import me.dimitri.model.options.v2.impl.OptionsImpl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         LegendOption legend = LegendOptionImpl.builder()
                 .display(true)
                 .position("right")
@@ -53,7 +54,11 @@ public class Main {
         QuickChart quickChart = new QuickChart();
         quickChart.setChart(chart);
 
-        System.out.println(quickChart.getUrl("quickchart.io", "chart", "http"));
+        quickChart.setHost("quickchart.io");
+        quickChart.setPath("chart");
+        quickChart.setSchema("http");
+
+        quickChart.toFile("");
     }
 
     private static DataPoint[] dataPoints(Integer[] arr) {
