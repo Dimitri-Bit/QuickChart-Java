@@ -1,5 +1,9 @@
 # About
-Unofficial Java API Wrapper for [quickchart](quickchart.io/)
+Unofficial Java API Wrapper for [quickchart.io](quickchart.io/)
+
+## To-Do
+1. Add v3 support for Options
+2. Add 
 
 # Usage
 This entire library is basically just loosely coupled Java objects that directly repressent ChartJS properties.
