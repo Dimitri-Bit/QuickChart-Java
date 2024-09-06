@@ -82,3 +82,13 @@ public class Main {
 ```
 
 It is much more verbose than just using string concatenation; however, this approach provides type safety and makes it easier to programmatically load data, while also reducing the likelihood of errors.
+
+After creating your desired `Chart` object you need to create a `QuickChart` object and configure it, heres an example:
+
+```java
+QuickChart quickChart = new QuickChart();
+quickChart.setChart(chart);
+System.out.println(quickChart.getUrl());
+```
+
+This was just a quick example, please check out the [docs]()
