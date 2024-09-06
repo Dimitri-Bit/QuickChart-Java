@@ -44,6 +44,18 @@ A QuickChart or ChartJS config that looks like this:
 Can be represented in Java like this:
 
 ```java
+import me.dimitri.model.chart.Chart;
+import me.dimitri.model.chart.ChartData;
+import me.dimitri.model.chart.ChartDataSet;
+import me.dimitri.model.chart.DataPoint;
+import me.dimitri.model.chart.impl.ChartDataImpl;
+import me.dimitri.model.chart.impl.ChartDataSetImpl;
+import me.dimitri.model.chart.impl.ChartImpl;
+import me.dimitri.util.DataPointHelper;
+
+public class Main {
+
+    public static void main(String[] args) {
         DataPoint[] dataPoint1 = DataPointHelper.dataPoints(new Integer[]{50, 60, 70, 180});
         ChartDataSet dataSet1 = ChartDataSetImpl.builder()
                 .label("Users")
@@ -65,6 +77,8 @@ Can be represented in Java like this:
                 .type("bar")
                 .data(chartData)
                 .build();
+    }
+}
 ```
 
 It is much more verbose than just using string concatenation; however, this approach provides type safety and makes it easier to programmatically load data, while also reducing the likelihood of errors.
