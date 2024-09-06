@@ -16,5 +16,8 @@ public class OptionsImpl implements Options {
     private TitleOption title;
     private ScalesOption scales;
     private LegendOption legend;
+    private String circumference;
+    private String rotation;
+    private Number cutoutPercentage;
 
 }
