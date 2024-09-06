@@ -1,10 +1,7 @@
 # About
-Unofficial Java API Wrapper for [quickchart.io](quickchart.io/)
+Unofficial Java API Wrapper for [quickchart.io](quickchart.io/).
 
 # Usage
-This entire library is basically just loosely coupled Java objects that directly repressent ChartJS properties.
-Lets go over a quick example.
-
 A QuickChart or ChartJS config that looks like this:
 
 ```json
@@ -83,7 +80,7 @@ public class Main {
 
 It is much more verbose than just using string concatenation; however, this approach provides type safety and makes it easier to programmatically load data, while also reducing the likelihood of errors.
 
-After creating your desired `Chart` object you need to create a `QuickChart` object and configure it, heres an example:
+After creating your desired `Chart` object you need to create a `QuickChart` object and configure it:
 
 ```java
 QuickChart quickChart = new QuickChart();
