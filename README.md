@@ -88,4 +88,4 @@ quickChart.setChart(chart);
 System.out.println(quickChart.getUrl());
 ```
 
-This was just a quick example, please check out the [docs]()
+This was just a quick example, please check out the [docs](https://github.com/Dimitri-Bit/QuickChart-Java/wiki/Basic-Chart)
